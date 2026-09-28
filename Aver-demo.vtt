@@ -1,0 +1,456 @@
+WEBVTT
+
+00:00:00.250 --> 00:00:07.418
+Aver helps a team review a change to an agent pipeline.
+The change could involve a model, prompt, tool,
+
+00:00:07.418 --> 00:00:13.832
+or harness. This walkthrough starts on the testing
+website, then follows a free workspace and the paid
+
+00:00:13.832 --> 00:00:16.850
+plans using a local demonstration with synthetic
+evidence.
+
+00:00:17.950 --> 00:00:24.078
+Start with recorded cases from your own workflow. Compare
+the current and proposed configurations, apply
+
+00:00:24.078 --> 00:00:31.024
+rules a person approved, and preserve an eligible result.
+Aver checks the evidence you submit. It does
+
+00:00:31.024 --> 00:00:33.883
+not automatically watch all your production traffic.
+
+00:00:34.983 --> 00:00:41.536
+The full loop begins in your own agent harness. Run the
+current and candidate configurations on the same
+
+00:00:41.536 --> 00:00:47.360
+tasks, repeat the runs, and record the action facts. Aver
+imports that evidence and applies human-
+
+00:00:47.360 --> 00:00:54.276
+approved rules. A pass can become an eligible signed
+result; a block or refusal tells the team what needs
+
+00:00:54.276 --> 00:00:57.917
+attention. Only an eligible record can support a release-
+time gate.
+
+00:00:59.017 --> 00:01:05.417
+The documentation explains the complete loop and the
+evidence formats. A workflow is saved as an App. A
+
+00:01:05.417 --> 00:01:11.106
+checkpoint names the decision being evaluated. A check
+applies the policy, and a signed record preserves
+
+00:01:11.106 --> 00:01:12.883
+the result and its limits.
+
+00:01:13.983 --> 00:01:20.213
+The public Console demonstrates the human judgment
+workflow. A reviewer inspects a case and marks the
+
+00:01:20.213 --> 00:01:26.443
+observed action as acceptable, unacceptable, or a never
+event. Here we make a demonstration judgment and
+
+00:01:26.443 --> 00:01:32.283
+undo it. Real policy judgments require a person to
+understand the case and the consequences.
+
+00:01:33.383 --> 00:01:39.925
+The AI-assist view offers proposals for a person to
+review. The public demo contains prepared examples,
+
+00:01:39.925 --> 00:01:46.466
+not a fresh live judge call. In the supported customer
+workflow, confirming, rejecting, or overriding a
+
+00:01:46.466 --> 00:01:53.008
+proposal records what the person decided. Assistance does
+not grant a model authority to approve the
+
+00:01:53.008 --> 00:01:53.417
+policy.
+
+00:01:54.517 --> 00:02:00.311
+In the single-attempt judgment workflow, the tune and
+document views show the suggested trade-offs and
+
+00:02:00.311 --> 00:02:06.491
+policy. A fitted preference is a suggestion for a person
+to review. Our repeated-run example uses
+
+00:02:06.491 --> 00:02:12.672
+explicit action rules instead. These are distinct
+evidence paths, and the policy version tells a reviewer
+
+00:02:12.672 --> 00:02:14.217
+which method was used.
+
+00:02:15.317 --> 00:02:21.921
+The policy document gathers the suggested trade-offs,
+evidence counts, hard limits, and scope. This is
+
+00:02:21.921 --> 00:02:28.086
+the human-judgment path. In the repeated-run workflow
+shown next, acceptance comes from explicit action
+
+00:02:28.086 --> 00:02:34.250
+rules. A reviewer needs to understand the policy and
+method before approving a version.
+
+00:02:35.350 --> 00:02:41.797
+Free includes one actively checked workflow and twenty
+five checks per month. The site lists Pro at forty
+
+00:02:41.797 --> 00:02:48.245
+nine dollars per month with two hundred fifty checks, and
+Team from two hundred forty nine dollars with
+
+00:02:48.245 --> 00:02:53.976
+three workflows and one thousand checks. Paid checkout is
+not currently configured on the deployed site.
+
+00:02:53.976 --> 00:02:56.483
+Later scenes demonstrate the non-charge test flow.
+
+00:02:57.583 --> 00:03:05.051
+A new user starts with account creation and the required
+terms. An existing user signs in. For the rest
+
+00:03:05.051 --> 00:03:11.339
+of this recording, we use the application’s local demo
+session and disposable data. No real account
+
+00:03:11.339 --> 00:03:14.483
+registration, payment, or customer deployment is being
+claimed.
+
+00:03:15.583 --> 00:03:22.324
+First create a workspace. It is the boundary for Apps,
+policies, evidence, members, and billing. Our
+
+00:03:22.324 --> 00:03:29.486
+example is a workspace maintenance agent, where the team
+wants to check that a proposed version respects
+
+00:03:29.486 --> 00:03:30.750
+file access boundaries.
+
+00:03:31.850 --> 00:03:38.803
+We name the workflow Workspace Maintenance Agent and
+identify who will use the decision. This creates the
+
+00:03:38.803 --> 00:03:45.347
+App that will hold our checkpoint, comparisons, and
+records. The same structure works for other agent
+
+00:03:45.347 --> 00:03:46.983
+pipelines and consequential actions.
+
+00:03:48.083 --> 00:03:54.060
+Choose the first comparison and create the App. A
+checkpoint focuses the review on a particular decision.
+
+00:03:54.060 --> 00:04:00.389
+In this example, the recorded action is a file write
+outside the allowed scope. We will compare current
+
+00:04:00.389 --> 00:04:02.850
+and candidate behavior on the same tasks.
+
+00:04:03.950 --> 00:04:10.179
+Billing shows that this workspace is on Free. The
+allowance is attached to the workspace and its actively
+
+00:04:10.179 --> 00:04:16.407
+checked Apps. You can inspect usage and retention before
+choosing a paid plan. We will complete the core
+
+00:04:16.407 --> 00:04:18.483
+evidence and record workflow here first.
+
+00:04:19.583 --> 00:04:25.833
+The repeated-run workflow starts with action facts,
+rather than asking a judge to score every transcript.
+
+00:04:25.833 --> 00:04:32.472
+Here we import eighty synthetic tasks, five attempts per
+side: eight hundred rows in total. We explicitly
+
+00:04:32.472 --> 00:04:37.550
+mark the source as synthetic and retain hashes instead of
+raw case text.
+
+00:04:38.650 --> 00:04:45.361
+The preview checks the structure before import. Building
+the bench saves the task evidence and the exact
+
+00:04:45.361 --> 00:04:51.676
+comparison identities. These are recorded synthetic
+outcomes; this import does not run a live model or
+
+00:04:51.676 --> 00:04:53.650
+reconstruct a customer’s entire pipeline.
+
+00:04:54.750 --> 00:05:01.776
+For repeated runs, a person approves explicit action
+rules. This policy treats firing write outside scope
+
+00:05:01.776 --> 00:05:08.362
+as harmful. It uses a five percent tolerance, requires
+consistent attempts before assigning a typical
+
+00:05:08.362 --> 00:05:14.949
+decision, and refuses excessively unstable evidence. The
+draft was prepared through the API; here the
+
+00:05:14.949 --> 00:05:17.583
+owner reviews its actual approval document.
+
+00:05:18.683 --> 00:05:24.806
+Approval activates this exact version for this
+checkpoint. That is a human action. An agent token cannot
+
+00:05:24.806 --> 00:05:30.569
+approve the policy. The approval document makes the
+method and limits visible, so a reviewer can
+
+00:05:30.569 --> 00:05:33.450
+understand what a future pass would actually mean.
+
+00:05:34.550 --> 00:05:41.061
+Here is an alternative synthetic candidate under the same
+five percent rule. Five of sixty tasks reliably
+
+00:05:41.061 --> 00:05:47.189
+switch toward the harmful action. The uncertainty
+straddles the limit, so Aver refuses to decide. The
+
+00:05:47.189 --> 00:05:54.083
+next-actions list names the tasks that need review. A
+refusal cannot be saved as a signed passing record.
+
+00:05:55.183 --> 00:06:00.899
+This second alternative makes the harmful action on
+twenty four of eighty tasks. That exceeds the same
+
+00:06:00.899 --> 00:06:06.615
+approved limit with enough evidence to block. The owner
+can inspect the changed cases and fix the
+
+00:06:06.615 --> 00:06:10.650
+candidate. We do not loosen the rule to make the
+demonstration pass.
+
+00:06:11.750 --> 00:06:17.405
+The candidate passes on these eighty synthetic tasks
+under the approved limits. The readout separates
+
+00:06:17.405 --> 00:06:23.437
+reliable decision changes from changes in action
+frequency. A pass is scoped to these inputs and
+
+00:06:23.437 --> 00:06:27.583
+assumptions. It does not prove that the agent is
+universally safe.
+
+00:06:28.683 --> 00:06:35.719
+An eligible verdict can be saved as a signed record. The
+record binds the comparison, evidence scope,
+
+00:06:35.719 --> 00:06:41.928
+policy, and result. Because our evidence is synthetic,
+this is a signed demonstration. It cannot
+
+00:06:41.928 --> 00:06:43.583
+authorize a real release.
+
+00:06:44.683 --> 00:06:51.243
+The record page gives a reviewer the policy, evidence
+scope, result, and limitations together. A
+
+00:06:51.243 --> 00:06:56.490
+cryptographic signature establishes integrity. Human
+approval is a separate fact. Reviewers should
+
+00:06:56.490 --> 00:07:03.050
+inspect both, together with the record’s current status
+and the relevance of the underlying evidence.
+
+00:07:04.150 --> 00:07:10.410
+The owner can append a review decision and a comment.
+This preserves who reviewed the result without
+
+00:07:10.410 --> 00:07:15.933
+rewriting the signed credential. Here we approve only the
+synthetic demonstration. That review does not
+
+00:07:15.933 --> 00:07:19.983
+turn demonstration data into customer evidence or grant
+permission to release.
+
+00:07:21.083 --> 00:07:28.083
+A reviewer can open a holder-shared verification page
+without an account. The page separates signature
+
+00:07:28.083 --> 00:07:33.683
+authenticity, current status, human review, and recorded
+scope. This demonstration remains clearly
+
+00:07:33.683 --> 00:07:39.750
+labeled synthetic and non-deployable. Verification does
+not prove that the original measurements were
+
+00:07:39.750 --> 00:07:41.150
+truthful or representative.
+
+00:07:42.250 --> 00:07:48.426
+The verification page shows four separate facts:
+authenticity, current status, human review, and the
+
+00:07:48.426 --> 00:07:55.043
+scope covered by the evidence. Our synthetic result is
+authentic under the local development key,
+
+00:07:55.043 --> 00:08:01.660
+current, and reviewed. It still cannot authorize a
+release. That distinction remains visible after a
+
+00:08:01.660 --> 00:08:02.983
+human approves it.
+
+00:08:04.083 --> 00:08:10.424
+Now we demonstrate the paid experience. The local
+application uses its non-charge checkout path, so no
+
+00:08:10.424 --> 00:08:17.161
+card is collected and no money moves. The workspace
+changes from Free to Pro. The displayed allowance
+
+00:08:17.161 --> 00:08:21.917
+rises to two hundred fifty monthly checks and ninety day
+evidence-detail retention.
+
+00:08:23.017 --> 00:08:29.033
+Team adds capacity for multiple actively checked
+workflows, longer retention, team roles, and audit
+
+00:08:29.033 --> 00:08:35.909
+history. This upgrade is also synthetic test billing.
+Extra comparison checkpoints inside one App do not
+
+00:08:35.909 --> 00:08:38.917
+each count as a separate billed workflow.
+
+00:08:40.017 --> 00:08:46.620
+The rechecks tab exposes cadence and budget controls
+together with readiness. This App does not yet have
+
+00:08:46.620 --> 00:08:52.446
+the completed model-change Check required by this
+scheduling path, so its controls are disabled. Paid
+
+00:08:52.446 --> 00:08:57.883
+capacity does not remove that requirement. No recurring
+job is enabled in this recording.
+
+00:08:58.983 --> 00:09:04.607
+Workspace settings bring membership and operational
+controls into one place. Roles determine what a
+
+00:09:04.607 --> 00:09:11.035
+collaborator may do. Audit history helps the team review
+important actions. The demo does not send
+
+00:09:11.035 --> 00:09:14.650
+invitations to real people or change a customer
+workspace.
+
+00:09:15.750 --> 00:09:22.148
+An App-scoped token can submit evidence, run supported
+checks, read verdicts, save eligible records, and
+
+00:09:22.148 --> 00:09:28.545
+export configuration when every release requirement is
+met. The token cannot approve policies or add
+
+00:09:28.545 --> 00:09:34.517
+human signoff. Here we show the permission setup without
+displaying or issuing a secret.
+
+00:09:35.617 --> 00:09:41.521
+The App’s agent access page generates setup instructions
+for the selected checkpoint. Choose an agent
+
+00:09:41.521 --> 00:09:47.818
+client, store the limited token in a secret reference,
+and use the generated configuration. An optional
+
+00:09:47.818 --> 00:09:54.115
+local runner keeps model credentials and execution on
+your compute. This scene shows the setup; no
+
+00:09:54.115 --> 00:09:56.083
+external agent is connected here.
+
+00:09:57.183 --> 00:10:03.779
+The agent guide documents the integration sequence. Your
+pipeline produces evidence, submits it for its
+
+00:10:03.779 --> 00:10:11.255
+App, runs a supported check, reads the result, and saves
+an eligible record. Human review stays outside
+
+00:10:11.255 --> 00:10:16.972
+the machine’s permissions. Exact method compatibility
+matters; supported operations do not imply that
+
+00:10:16.972 --> 00:10:20.050
+every evidence format runs through every endpoint.
+
+00:10:21.150 --> 00:10:27.887
+The CI guide explains the release-time check. Bind the
+App, checkpoint, and immutable record explicitly.
+
+00:10:27.887 --> 00:10:34.624
+The gate also considers eligibility and status. A
+synthetic demonstration like ours must remain blocked
+
+00:10:34.624 --> 00:10:38.217
+for release, even though its statistical verdict passed.
+
+00:10:39.317 --> 00:10:45.771
+Fleet is the overview of the team’s workflows. Console is
+where evidence and policy are examined.
+
+00:10:45.771 --> 00:10:51.822
+Decisions focuses on candidate comparisons, and Records
+preserves saved results. The daily loop is to
+
+00:10:51.822 --> 00:10:58.277
+update the evidence, check a change under approved rules,
+review the result, and preserve what was
+
+00:10:58.277 --> 00:10:59.083
+actually decided.
+
+00:11:00.183 --> 00:11:08.088
+The workflow ends with a result people and systems can
+inspect. This demo covered the public site, the
+
+00:11:08.088 --> 00:11:14.236
+free core workflow, paid test entitlements, team
+controls, and agent integration setup. All workspace
+
+00:11:14.236 --> 00:11:19.944
+data was synthetic. Live payment, production release
+approval, and scheduled execution were not
+
+00:11:19.944 --> 00:11:20.383
+performed.
